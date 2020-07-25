@@ -4,78 +4,277 @@ from bitarray.util import int2ba
 import random
 
 class BitBoard:
-    __zeroVariable    = bitarray(64, endian='little')
-    __zeroVariable.setall(False)
-    __whitePawns      = bitarray(64, endian='little')
-    __whitePawns.setall(False)
-    __whiteRooks      = bitarray(64, endian='little')
-    __whiteRooks.setall(False)
-    __whiteKnights    = bitarray(64, endian='little')
-    __whiteKnights.setall(False)
-    __whiteBishops    = bitarray(64, endian='little')
-    __whiteBishops.setall(False)
-    __whiteQueens     = bitarray(64, endian='little')
-    __whiteQueens.setall(False)
-    __whiteKing       = bitarray(64, endian='little')
-    __whiteKing.setall(False)
-    __blackPawns      = bitarray(64, endian='little')
-    __blackPawns.setall(False)
-    __blackRooks      = bitarray(64, endian='little')
-    __blackRooks.setall(False)
-    __blackKnights    = bitarray(64, endian='little')
-    __blackKnights.setall(False)
-    __blackBishops    = bitarray(64, endian='little')
-    __blackBishops.setall(False)
-    __blackQueens     = bitarray(64, endian='little')
-    __blackQueens.setall(False)
-    __blackKing       = bitarray(64, endian='little')
-    __blackKing.setall(False)
-    __whitePieces     = bitarray(64, endian='little')
-    __whitePieces.setall(False)
-    __blackPieces     = bitarray(64, endian='little')
-    __blackPieces.setall(False)
-    __allPieces       = bitarray(64, endian='little')
-    __allPieces.setall(False)
-
     def __init__(self, typeOfGame):
+        self.__nullBitArray = bitarray(64, endian='little')
+        self.__nullBitArray.setall(False)
+        self.__whitePawns = bitarray(64, endian='little')
+        self.__whitePawns.setall(False)
+        self.__whiteRooks = bitarray(64, endian='little')
+        self.__whiteRooks.setall(False)
+        self.__whiteKnights = bitarray(64, endian='little')
+        self.__whiteKnights.setall(False)
+        self.__whiteBishops = bitarray(64, endian='little')
+        self.__whiteBishops.setall(False)
+        self.__whiteQueens = bitarray(64, endian='little')
+        self.__whiteQueens.setall(False)
+        self.__whiteKing = bitarray(64, endian='little')
+        self.__whiteKing.setall(False)
+        self.__blackPawns = bitarray(64, endian='little')
+        self.__blackPawns.setall(False)
+        self.__blackRooks = bitarray(64, endian='little')
+        self.__blackRooks.setall(False)
+        self.__blackKnights = bitarray(64, endian='little')
+        self.__blackKnights.setall(False)
+        self.__blackBishops = bitarray(64, endian='little')
+        self.__blackBishops.setall(False)
+        self.__blackQueens = bitarray(64, endian='little')
+        self.__blackQueens.setall(False)
+        self.__blackKing = bitarray(64, endian='little')
+        self.__blackKing.setall(False)
+        self.__whitePieces = bitarray(64, endian='little')
+        self.__whitePieces.setall(False)
+        self.__blackPieces = bitarray(64, endian='little')
+        self.__blackPieces.setall(False)
+        self.__allPieces = bitarray(64, endian='little')
+        self.__allPieces.setall(False)
+
         if typeOfGame == 'Classic':
             self.__initialiseBitboard()
         else:
             self.__initialiseBitboardChess960()
 
+    @property
+    def whitePawns(self):
+        return self.__whitePawns
+
+    @whitePawns.setter
+    def whitePawns(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whitePawns = newValue
+
+    @property
+    def whiteRooks(self):
+        return self.__whiteRooks
+
+    @whiteRooks.setter
+    def whiteRooks(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whiteRooks = newValue
+
+    @property
+    def whiteKnights(self):
+        return self.__whiteKnights
+
+    @whiteKnights.setter
+    def whiteKnights(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whiteKnights = newValue
+
+    @property
+    def whiteBishops(self):
+        return self.__whiteBishops
+
+    @whiteBishops.setter
+    def whiteBishops(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whiteBishops = newValue
+
+    @property
+    def whiteQueens(self):
+        return self.__whiteQueens
+
+    @whiteQueens.setter
+    def whiteQueens(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whiteQueens = newValue
+
+    @property
+    def whiteKing(self):
+        return self.__whiteKing
+
+    @whiteKing.setter
+    def whiteKing(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__whiteKing = newValue
+
+    @property
+    def blackPawns(self):
+        return self.__blackPawns
+
+    @blackPawns.setter
+    def blackPawns(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackPawns = newValue
+
+    @property
+    def blackRooks(self):
+        return self.__blackRooks
+
+    @blackRooks.setter
+    def blackRooks(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackRooks = newValue
+
+    @property
+    def blackKnights(self):
+        return self.__blackKnights
+
+    @blackKnights.setter
+    def blackKnights(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackKnights = newValue
+
+    @property
+    def blackBishops(self):
+        return self.__blackBishops
+
+    @blackBishops.setter
+    def blackBishops(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackBishops = newValue
+
+    @property
+    def blackQueens(self):
+        return self.__blackQueens
+
+    @blackQueens.setter
+    def blackQueens(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackQueens = newValue
+
+    @property
+    def blackKing(self):
+        return self.__blackKing
+
+    @blackKing.setter
+    def blackKing(self, newValue):
+        if(not isinstance(newValue, bitarray)):
+            raise TypeError("Type " + str(type(newValue).__name__) + " received while "
+                            + str(bitarray.__name__) + " expected")
+        elif(newValue.length() != 64):
+            raise ValueError("The length of the bitarray is " + newValue.legth() + " instaed of 64")
+        elif(newValue.endian() == 'big'):
+            raise ValueError("The bit endianness is " + newValue.endian() + " instaed of little")
+        else:
+            self.__blackKing = newValue
+
+    @property
+    def whitePieces(self):
+        return int2ba(ba2int(self.whitePawns) | ba2int(self.whiteRooks) | ba2int(self.whiteKnights)
+                                    | ba2int(self.whiteBishops) | ba2int(self.whiteQueens)
+                                    | ba2int(self.whiteKing))
+
+    @property
+    def blackPieces(self):
+        return int2ba(ba2int(self.blackPawns) | ba2int(self.blackRooks) | ba2int(self.blackKnights)
+                                    | ba2int(self.blackBishops) | ba2int(self.blackQueens)
+                                    | ba2int(self.blackKing))
+
+    @property
+    def allPieces(self):
+        return int2ba(ba2int(self.whitePieces) | ba2int(self.blackPieces))
+
     def __initialiseBitboard(self):
-        self.__whitePawns       = int2ba((ba2int(self.__whitePawns) | 255) << 8, 64)
-        self.__whiteRooks       = int2ba((ba2int(self.__whiteRooks) | 129), 64)
-        self.__whiteKnights     = int2ba((ba2int(self.__whiteKnights) | 66), 64)
-        self.__whiteBishops     = int2ba((ba2int(self.__whiteKnights) | 36), 64)
-        self.__whiteQueens      = int2ba((ba2int(self.__whiteKnights) | 8), 64)
-        self.__whiteKing        = int2ba((ba2int(self.__whiteKnights) | 16), 64)
-        self.__blackPawns       = int2ba(ba2int(self.__whitePawns) << 40, 64)
-        self.__blackRooks       = int2ba(ba2int(self.__whiteRooks) << 56, 64)
-        self.__blackKnights     = int2ba(ba2int(self.__whiteKnights) << 56, 64)
-        self.__blackBishops     = int2ba(ba2int(self.__whiteBishops) << 56, 64)
-        self.__blackQueens      = int2ba(ba2int(self.__whiteQueens) << 56, 64)
-        self.__blackKing        = int2ba(ba2int(self.__whiteKing) << 56, 64)
-
-        self.__whitePieces = int2ba(ba2int(self.__whitePawns) | ba2int(self.__whiteRooks) | ba2int(self.__whiteKnights)
-                                    | ba2int(self.__whiteBishops) | ba2int(self.__whiteQueens)
-                                    | ba2int(self.__whiteKing))
-
-        self.__blackPieces = int2ba(ba2int(self.__blackPawns) | ba2int(self.__blackRooks) | ba2int(self.__blackKnights)
-                                    | ba2int(self.__blackBishops) | ba2int(self.__blackQueens)
-                                    | ba2int(self.__blackKing))
-
-        self.__allPieces = int2ba(ba2int(self.__whitePieces) | ba2int(self.__blackPieces))
+        self.whitePawns       = int2ba((ba2int(self.whitePawns) | 255) << 8, 64, endian='little')
+        self.whiteRooks       = int2ba((ba2int(self.whiteRooks) | 129), 64, endian='little')
+        self.whiteKnights     = int2ba((ba2int(self.whiteKnights) | 66), 64, endian='little')
+        self.whiteBishops     = int2ba((ba2int(self.whiteBishops) | 36), 64, endian='little')
+        self.whiteQueens      = int2ba((ba2int(self.whiteQueens) | 8), 64, endian='little')
+        self.whiteKing        = int2ba((ba2int(self.whiteKing) | 16), 64, endian='little')
+        self.blackPawns       = int2ba(ba2int(self.whitePawns) << 40, 64, endian='little')
+        self.blackRooks       = int2ba(ba2int(self.whiteRooks) << 56, 64, endian='little')
+        self.blackKnights     = int2ba(ba2int(self.whiteKnights) << 56, 64, endian='little')
+        self.blackBishops     = int2ba(ba2int(self.whiteBishops) << 56, 64, endian='little')
+        self.blackQueens      = int2ba(ba2int(self.whiteQueens) << 56, 64, endian='little')
+        self.blackKing        = int2ba(ba2int(self.whiteKing) << 56, 64, endian='little')
 
     def __initialiseBitboardChess960(self):
-        self.__whitePawns      = int2ba((ba2int(self.__whitePawns) | 255) << 8, 64)
+        self.whitePawns = int2ba((ba2int(self.whitePawns) | 255) << 8, 64, endian='little')
 
         positionList = list(range(0, 8))
 
         randNumber = random.choice(positionList)
 
         #self.__whiteBishops[randNumber] = True
-        self.__whiteBishops =  int2ba(ba2int(self.__whiteBishops) | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteBishops =  int2ba(ba2int(self.whiteBishops) | ((ba2int(self.__nullBitArray) | 1) << randNumber)
+                                    , 64, endian='little')
 
         lastPosition = randNumber
 
@@ -85,16 +284,16 @@ class BitBoard:
             randNumber = random.choice(positionList)
         else:
             #self.__whiteBishops[randNumber] = True
-            self.__whiteBishops =  int2ba(ba2int(self.__whiteBishops)
-                                          | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+            self.whiteBishops =  int2ba(ba2int(self.whiteBishops)
+                                          | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         positionList.remove(randNumber)
 
         randNumber = random.choice(positionList)
 
         #self.__whiteRooks[randNumber] = True
-        self.__whiteRooks = int2ba(ba2int(self.__whiteRooks)
-                                   | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteRooks = int2ba(ba2int(self.whiteRooks)
+                                   | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         lastPosition = randNumber
 
@@ -104,8 +303,8 @@ class BitBoard:
             randNumber = random.choice(positionList)
         else:
             #self.__whiteRooks[randNumber] = True
-            self.__whiteRooks = int2ba(ba2int(self.__whiteRooks)
-                                       | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+            self.whiteRooks = int2ba(ba2int(self.whiteRooks)
+                                       | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         rookLastPosition = randNumber
 
@@ -119,84 +318,75 @@ class BitBoard:
                 randNumber = random.choice(positionList)
 
         #self.__whiteKing[randNumber] = True
-        self.__whiteKing = int2ba(ba2int(self.__whiteKing)
-                                   | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteKing = int2ba(ba2int(self.whiteKing)
+                                   | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         positionList.remove(randNumber)
 
         randNumber = random.choice(positionList)
 
         #self.__whiteKnights[randNumber] = True
-        self.__whiteKnights = int2ba(ba2int(self.__whiteKnights)
-                                  | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteKnights = int2ba(ba2int(self.whiteKnights)
+                                  | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         positionList.remove(randNumber)
 
         randNumber = random.choice(positionList)
 
         #self.__whiteKnights[randNumber] = True
-        self.__whiteKnights = int2ba(ba2int(self.__whiteKnights)
-                                     | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteKnights = int2ba(ba2int(self.whiteKnights)
+                                     | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
         positionList.remove(randNumber)
 
         randNumber = random.choice(positionList)
 
         #self.__whiteQueens[randNumber] = True
-        self.__whiteQueens = int2ba(ba2int(self.__whiteQueens)
-                                     | ((ba2int(self.__zeroVariable) | 1) << randNumber), 64)
+        self.whiteQueens = int2ba(ba2int(self.whiteQueens)
+                                     | ((ba2int(self.__nullBitArray) | 1) << randNumber), 64, endian='little')
 
-        self.__blackPawns   = int2ba(ba2int(self.__whitePawns) << 40, 64)
-        self.__blackRooks   = int2ba(ba2int(self.__whiteRooks)    << 56, 64)
-        self.__blackBishops = int2ba(ba2int(self.__whiteBishops)  << 56, 64)
-        self.__blackKnights = int2ba(ba2int(self.__whiteKnights)  << 56, 64)
-        self.__blackQueens  = int2ba(ba2int(self.__whiteQueens)   << 56, 64)
-        self.__blackKing    = int2ba(ba2int(self.__whiteKing)     << 56, 64)
-
-        self.__whitePieces = int2ba(ba2int(self.__whitePawns) | ba2int(self.__whiteRooks) | ba2int(self.__whiteKnights)
-                                    | ba2int(self.__whiteBishops) | ba2int(self.__whiteQueens)
-                                    | ba2int(self.__whiteKing), 64)
-
-        self.__blackPieces = int2ba(ba2int(self.__blackPawns) | ba2int(self.__blackRooks) | ba2int(self.__blackKnights)
-                                    | ba2int(self.__blackBishops) | ba2int(self.__blackQueens)
-                                    | ba2int(self.__blackKing), 64)
-
-        self.__allPieces = int2ba(ba2int(self.__whitePieces) | ba2int(self.__blackPieces))
+        self.blackPawns   = int2ba(ba2int(self.whitePawns) << 40, 64, endian='little')
+        self.blackRooks   = int2ba(ba2int(self.whiteRooks)    << 56, 64, endian='little')
+        self.blackBishops = int2ba(ba2int(self.whiteBishops)  << 56, 64, endian='little')
+        self.blackKnights = int2ba(ba2int(self.whiteKnights)  << 56, 64, endian='little')
+        self.blackQueens  = int2ba(ba2int(self.whiteQueens)   << 56, 64, endian='little')
+        self.blackKing    = int2ba(ba2int(self.whiteKing)     << 56, 64, endian='little')
 
     def checkBoardIntegrity(self):
-        return not (ba2int(self.__whitePawns)     & ba2int(self.__whiteRooks)   & ba2int(self.__whiteKnights)
-                    & ba2int(self.__whiteBishops) & ba2int(self.__whiteQueens)  & ba2int(self.__whiteKing)
-                    & ba2int(self.__blackPawns)   & ba2int(self.__blackRooks)   & ba2int(self.__blackKnights)
-                    & ba2int(self.__blackBishops) & ba2int(self.__blackQueens)  & ba2int(self.__blackKing))
+        return not (ba2int(self.whitePawns)     & ba2int(self.whiteRooks)   & ba2int(self.whiteKnights)
+                    & ba2int(self.whiteBishops) & ba2int(self.whiteQueens)  & ba2int(self.whiteKing)
+                    & ba2int(self.blackPawns)   & ba2int(self.blackRooks)   & ba2int(self.blackKnights)
+                    & ba2int(self.blackBishops) & ba2int(self.blackQueens)  & ba2int(self.blackKing))
 
     def showBoard(self):
-        for i in range(len(self.__allPieces.tolist())):
+        """Depicts the current state of the board"""
+        for i in range(len(self.allPieces.tolist())):
             if i % 8 == 0:
                 print()
-            if self.__allPieces[i] is False:
+            if self.allPieces[i] is False:
                 print('_', end='  ')
             else:
-                if self.__allPieces[i] == self.__whitePawns[i]:
+                if self.allPieces[i] == self.whitePawns[i]:
                     print(u'\u2659', end=' ')
-                elif self.__allPieces[i] == self.__whiteRooks[i]:
+                elif self.allPieces[i] == self.whiteRooks[i]:
                     print(u'\u2656', end=' ')
-                elif self.__allPieces[i] == self.__whiteKnights[i]:
+                elif self.allPieces[i] == self.whiteKnights[i]:
                     print(u'\u2658', end=' ')
-                elif self.__allPieces[i] == self.__whiteBishops[i]:
+                elif self.allPieces[i] == self.whiteBishops[i]:
                     print(u'\u2657', end=' ')
-                elif self.__allPieces[i] == self.__whiteQueens[i]:
+                elif self.allPieces[i] == self.whiteQueens[i]:
                     print(u'\u2655', end=' ')
-                elif self.__allPieces[i] == self.__whiteKing[i]:
+                elif self.allPieces[i] == self.whiteKing[i]:
                     print(u'\u2654', end=' ')
-                elif self.__allPieces[i] ==self. __blackPawns[i]:
+                elif self.allPieces[i] ==self.blackPawns[i]:
                     print(u'\u265F', end=' ')
-                elif self.__allPieces[i] == self.__blackRooks[i]:
+                elif self.allPieces[i] == self.blackRooks[i]:
                     print(u'\u265C', end=' ')
-                elif self.__allPieces[i] == self.__blackKnights[i]:
+                elif self.allPieces[i] == self.blackKnights[i]:
                     print(u'\u265E', end=' ')
-                elif self.__allPieces[i] == self.__blackBishops[i]:
+                elif self.allPieces[i] == self.blackBishops[i]:
                     print(u'\u265D', end=' ')
-                elif self.__allPieces[i] == self.__blackQueens[i]:
+                elif self.allPieces[i] == self.blackQueens[i]:
                     print(u'\u265B', end=' ')
-                elif self.__allPieces[i] == self.__blackKing[i]:
+                elif self.allPieces[i] == self.blackKing[i]:
                     print(u'\u265A', end=' ')
