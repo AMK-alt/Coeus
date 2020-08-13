@@ -239,17 +239,17 @@ class BitBoard:
     def whitePieces(self):
         return int2ba(ba2int(self.whitePawns) | ba2int(self.whiteRooks) | ba2int(self.whiteKnights)
                                     | ba2int(self.whiteBishops) | ba2int(self.whiteQueens)
-                                    | ba2int(self.whiteKing))
+                                    | ba2int(self.whiteKing), 64, endian='little')
 
     @property
     def blackPieces(self):
         return int2ba(ba2int(self.blackPawns) | ba2int(self.blackRooks) | ba2int(self.blackKnights)
                                     | ba2int(self.blackBishops) | ba2int(self.blackQueens)
-                                    | ba2int(self.blackKing))
+                                    | ba2int(self.blackKing), 64, endian='little')
 
     @property
     def allPieces(self):
-        return int2ba(ba2int(self.whitePieces) | ba2int(self.blackPieces))
+        return int2ba(ba2int(self.whitePieces) | ba2int(self.blackPieces), 64, endian='little')
 
     def __initialiseBitboard(self):
         self.whitePawns       = int2ba((ba2int(self.whitePawns) | 255) << 8, 64, endian='little')
@@ -360,9 +360,13 @@ class BitBoard:
 
     def showBoard(self):
         """Depicts the current state of the board"""
-        for i in range(len(self.allPieces.tolist())):
+        rank = 9
+        page = '\n   A  B  C  D  E  F  G  H\n'
+        for i in range(64):
             if i % 8 == 0:
+                rank -= 1
                 print()
+                print(rank, end='  ')
             if self.allPieces[i] is False:
                 print('_', end='  ')
             else:
@@ -390,3 +394,4 @@ class BitBoard:
                     print(u'\u265B', end=' ')
                 elif self.allPieces[i] == self.blackKing[i]:
                     print(u'\u265A', end=' ')
+        print(page)
