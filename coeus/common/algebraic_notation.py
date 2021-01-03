@@ -234,25 +234,3 @@ def moveNotation(sourcesSquare, destinationSquare, typeOfpiece, typeOfMove, disa
         move = 'O-O-O'
 
     return move
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 1, 0, 0, 0, 0, 0))
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 0, 1, 0, 0, 0, 0))
-
-print(moveNotation(10, 6, 'whiteKnights', 'capture', 1, 0, 0, 0, 0, 0))
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 0, 0, 1, 0, 0, 0))
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 1, 0, 0, 2, 0, 0))
-
-print(moveNotation(48, 56, 'whitePawns', 'promotion', 0, 0, 0, 0, 'whiteKnights', 0))
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 0, 0, 1, 0, 0, 1))
-
-print(moveNotation(9, 6, 'whiteKnights', 'capture', 0, 0, 1, 0, 0, 2))
-
-print(getAlgebraicNotation(9))
-
-print(getAlgebraicNotation(12))
-
-print(getSquareNumber('a3'))
