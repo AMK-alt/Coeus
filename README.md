@@ -1,2 +1,2 @@
 # Coeus
-Coeus Chess Engine
+A OO Chess Engine written in python
