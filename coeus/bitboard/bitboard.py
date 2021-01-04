@@ -40,7 +40,7 @@ class BitBoard:
 
         if typeOfGame == 'Classic':
             self.__initialiseBitboard()
-        else:
+        elif typeOfGame == '960':
             self.__initialiseBitboardChess960()
 
     @property

@@ -1,15 +1,15 @@
-from coeus.game_state import GameState
+from coeus.game.game_state import GameState
 from bitarray.util import ba2int
 
-class Moves(GameState):
+class Moves():
 
-    def __init__(self):
-        self.RANK_1 = 255  # 2**8 - 2**0
-        self.RANK_2 = 65280  # 2**16 - 2**8
-        self.RANK_7 = 71776119061217280  # 2**56 - 2**48
-        self.RANK_8 = 18374686479671623680  # 2**64 - 2**56 == (2**63 + 2**62  + 2**61 + 2**60 + 2**59 + 2**58 + 2**57 + 2**56)
-        self.FILE_A = 72340172838076673
-        self.FILE_H = 9259542123273814144
+    #def __init__(self):
+    RANK_1 = 255  # 2**8 - 2**0
+    RANK_2 = 65280  # 2**16 - 2**8
+    RANK_7 = 71776119061217280  # 2**56 - 2**48
+    RANK_8 = 18374686479671623680  # 2**64 - 2**56 == (2**63 + 2**62  + 2**61 + 2**60 + 2**59 + 2**58 + 2**57 + 2**56)
+    FILE_A = 72340172838076673
+    FILE_H = 9259542123273814144
 
     def getWhitePawnsLegalMoves(self, board):
         whitePawnsCurrentState = board.whitePawns
